@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercito Italiano RolePlay | Forza, Onore, Patria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        
+        /* Header Sopra */
+        
+        :root {
+            --dark-green: #1a3a1a;
+            --medium-green: #2d5a2d;
+            --light-green: #3c6e3c;
+            --black: #121212;
+            --dark-gray: #333333;
+            --light-gray: #f0f0f0;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        header {
+            background-color: var(--dark-green);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .logo h1 {
+            color: white;
+            margin-left: 15px;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1600/900') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .cta-button {
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        section {
+            padding: 80px 10%;
+        }
+        
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            overflow: hidden; /* Per assicurarsi che l'immagine non crei scrollbar */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('image/eiwall2.jpg') center/cover no-repeat;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay scuro per leggibilità */
+            z-index: 2;
+        }
+
+        .hero h2, .hero p, .hero .cta-button {
+            position: relative;
+            z-index: 3; /* Valore più alto per assicurarsi che siano sopra l'immagine e l'overlay */
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* footer sotto */
+
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 60px 10% 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #009246 33.3%, #ffffff 33.3%, #ffffff 66.6%, #ce2b37 66.6%); /* Tricolore italiano */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo img {
+            height: 100px;
+            width: 165px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--medium-green);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-links h3, .footer-contact h3, .footer-documents h3 {
+            position: relative;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .footer-links h3::after, .footer-contact h3::after, .footer-documents h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .footer-links ul, .footer-documents ul {
+            list-style: none;
+        }
+
+        .footer-links ul li, .footer-documents ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a, .footer-documents ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links ul li a i, .footer-documents ul li a i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-links ul li a:hover, .footer-documents ul li a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info p span {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .contact-info p a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: var(--gold);
+            text-decoration: underline;
+        }
+
+        .join-now {
+            margin-top: 25px;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .join-button i {
+            margin-right: 8px;
+        }
+
+        .join-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .footer-credentials {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .certifications {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .certifications span {
+            display: flex;
+            align-items: center;
+            color: #e0e0e0;
+        }
+
+        .certifications span i {
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .copyright p {
+            margin-bottom: 10px;
+            color: #a0a0a0;
+        }
+
+        .copyright p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .certifications {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        /* Registrazione */
+
+        .registration-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--light-gray);
+            padding: 20px;
+        }
+
+        .registration-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .registration-form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+        }
+
+        .timer-display {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--dark-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        .quiz-section, .registration-section {
+            display: none;
+        }
+
+        .quiz-section.active, .registration-section.active {
+            display: flex;
+        }
+
+
+        /* Quiz */
+
+                /* Stili specifici per il quiz */
+        .quiz-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 10%;
+            background-color: var(--light-gray);
+        }
+
+        .quiz-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .quiz-title {
+            text-align: center;
+            color: var(--dark-green);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .quiz-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 20px;
+        }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .question-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .option input[type="radio"] {
+            display: none;
+        }
+
+        .option .custom-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--dark-green);
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+        }
+
+        .option input[type="radio"]:checked + .custom-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: var(--dark-green);
+            border-radius: 50%;
+        }
+
+        .option:hover {
+            border-color: var(--gold);
+            background-color: #f9f9f9;
+        }
+
+        .option input[type="radio"]:checked + .custom-radio {
+            border-color: var(--gold);
+        }
+
+        .option-label {
+            flex-grow: 1;
+        }
+
+        #submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            background-color: var(--dark-green);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #submit-btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        #result-container {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: var(--dark-green);
+        }
+
+        @media (max-width: 768px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="Logo Esercito Italiano Roleplay">
+            <h1>ESERCITO ITALIANO IRP</h1>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Esercito Italiano: Forza, Onore, Patria</h2>
+        <div class="hero-image">
+            <img src="image/nessuna.jpg" alt="Soldati dell'Esercito Italiano">
+        </div>
+        <p>Non aspettare che il cambiamento arrivi, diventa tu il cambiamento! La tua forza e il tuo impegno per il nostro Paese.</p>
+        <a href="#" class="cta-button">Unisciti Ora</a>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section active">
+        <div class="registration-container">
+            <h2 class="quiz-title">Registrazione Partecipante</h2>
+            <form id="registration-form" class="registration-form">
+                <input type="text" id="nome" placeholder="Nome" required>
+                <input type="text" id="cognome" placeholder="Cognome" required>
+                <input type="date" id="data-nascita" placeholder="Data di Nascita" required>
+                <input type="tel" id="numero-telefono" placeholder="Numero di Telefono" required>
+                <button type="submit" class="cta-button">Avvia Quiz</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="timer-display" id="timer-display">60:00</div>
+        <div class="quiz-container">
+            <h2 class="quiz-title">Quiz Esercito Italiano</h2>
+            <div id="quiz">
+                <!-- Quiz questions will be dynamically added here -->
+            </div>
+            <button id="submit-btn">Termina Quiz</button>
+            <div id="result-container">
+                Grazie per aver partecipato!
+            </div>
+        </div>
+    </section>
+        
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <!-- Colonna Logo e Descrizione -->
+            <div class="footer-logo">
+                <img src="image/eiscritta.png" alt="Logo Esercito Italiano Roleplay">
+                <p>Il server roleplay dell'Esercito Italiano è una comunità dedicata alla simulazione realistica dell'esperienza militare. Uniamoci nel nome dei valori di onore, coraggio e disciplina per servire con fedeltà la Patria.</p>
+                <div class="social-icons">
+                    <a href="#" title="Discord" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Twitter" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+        
+            <!-- Colonna Link Utili -->
+            <div class="footer-links">
+                <h3>Link Utili</h3>
+                <ul>
+                    <li><a href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#"><i class="fa-solid fa-medal"></i> Decorazioni e Riconoscimenti</a></li>
+                    <li><a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+                </ul>
+            </div>
+        
+                <!-- Colonna Documenti -->
+                <div class="footer-documents">
+                    <h3>Documenti Ufficiali</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-file-alt"></i> Regolamento Generale</a></li>
+                        <li><a href="#"><i class="fa-solid fa-file-contract"></i> Codice di Condotta</a></li>
+                        <li><a href="#"><i class="fa-solid fa-file-medical"></i> Procedure Operative Standard</a></li>
+                        <li><a href="#"><i class="fa-solid fa-calendar-alt"></i> Calendario Addestrativo</a></li>
+                        <li><a href="#"><i class="fa-solid fa-shield-alt"></i> Normative di Sicurezza</a></li>
+                        <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Percorsi Formativi</a></li>
+                        <li><a href="#"><i class="fa-solid fa-history"></i> Storia dell'Esercito</a></li>
+                        <li><a href="#"><i class="fa-solid fa-newspaper"></i> Bollettino Informativo</a></li>
+                    </ul>
+                </div>
+        
+                <!-- Colonna Contatti -->
+                <div class="footer-contact">
+                    <h3>Contattaci</h3>
+                    <div class="contact-info">
+                        <p><i class="fa-brands fa-discord"></i> <span>Discord:</span> <a href="https://discord.gg/esercitoitalianorp" target="_blank">EsercitoItalianoRP</a></p>
+                        <p><i class="fa-solid fa-envelope"></i> <span>Email:</span> <a href="mailto:info@esercitoitalianorp.it">info@esercitoitalianorp.it</a></p>
+                        <p><i class="fa-solid fa-clock"></i> <span>Orari Server:</span> 14:00 - 00:00 CET</p>
+                        <p><i class="fa-solid fa-calendar-check"></i> <span>Addestramenti:</span> Martedì, Giovedì, Sabato</p>
+                        <p><i class="fa-solid fa-bullhorn"></i> <span>Reclutamenti:</span> Lunedì e Venerdì</p>
+                    </div>
+                    <div class="join-now">
+                        <a href="#" class="join-button"><i class="fa-solid fa-user-plus"></i> Unisciti Ora</a>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Copyright -->
+            <div class="copyright">
+                <p>&copy; 2025 Esercito Italiano Roleplay Server. Tutti i diritti riservati.</p>
+                <p><small>Questo server non è affiliato con l'Esercito Italiano ufficiale. Creato a scopo di intrattenimento e roleplay.</small></p>
+            </div>
+        </footer>
+
+        <script>
+            // Dati del quiz
+            const quizData = [
+                {
+                    category: "Armamento",
+                    question: "Qual è il fucile standard dell'esercito italiano?",
+                    image: "", 
+                    options: [
+                        "Beretta ARX160",
+                        "M16",
+                        "AK-47",
+                        "Kalashnikov"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    category: "Geografia",
+                    question: "Qual è la capitale dell'Italia?",
+                    image: "", 
+                    options: [
+                        "Milano",
+                        "Venezia", 
+                        "Roma",
+                        "Firenze"
+                    ],
+                    correctAnswer: 2
+                },
+                {
+                    category: "Storia Militare",
+                    question: "In quale anno è stata fondata la Repubblica Italiana?",
+                    image: "",
+                    options: [
+                        "1943",
+                        "1946",
+                        "1948",
+                        "1950"
+                    ],
+                    correctAnswer: 1
+                }
+                // Other 37 questions will be added here
+            ];
+
+            // DOM Elements
+            const registrationSection = document.querySelector('.registration-section');
+            const quizSection = document.querySelector('.quiz-section');
+            const registrationForm = document.getElementById('registration-form');
+            const quizContainer = document.getElementById('quiz');
+            const submitButton = document.getElementById('submit-btn');
+            const resultContainer = document.getElementById('result-container');
+            const timerDisplay = document.getElementById('timer-display');
+
+            // Registration Data
+            let participantData = {};
+
+            // Quiz State
+            let selectedAnswers = [];
+            let quizStartTime;
+            let quizTimer;
+
+            // Registration Form Submit
+            registrationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validate inputs
+                const nome = document.getElementById('nome').value.trim();
+                const cognome = document.getElementById('cognome').value.trim();
+                const dataNascita = document.getElementById('data-nascita').value;
+                const numeroTelefono = document.getElementById('numero-telefono').value.trim();
+
+                if (!nome || !cognome || !dataNascita || !numeroTelefono) {
+                    alert('Per favore, compila tutti i campi');
+                    return;
+                }
+                
+                // Collect participant data
+                participantData = {
+                    nome: nome,
+                    cognome: cognome,
+                    dataNascita: dataNascita,
+                    numeroTelefono: numeroTelefono
+                };
+
+                // Hide registration section, show quiz section
+                registrationSection.classList.remove('active');
+                quizSection.classList.add('active');
+
+                // Generate quiz and start timer
+                generateQuiz();
+                startQuizTimer();
+            });
+
+            // Generate Quiz 
+            function generateQuiz() {
+                quizStartTime = new Date();
+
+                quizData.forEach((questionData, index) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.classList.add('question');
+
+                    const categoryElement = document.createElement('div');
+                    categoryElement.classList.add('question-category');
+                    categoryElement.textContent = questionData.category;
+                    questionDiv.appendChild(categoryElement);
+
+                    if (questionData.image && questionData.image.trim() !== '') {
+                        const image = document.createElement('img');
+                        image.src = questionData.image;
+                        image.classList.add('question-image');
+                        questionDiv.appendChild(image);
+                    }
+
+                    const questionText = document.createElement('div');
+                    questionText.classList.add('question-text');
+                    questionText.textContent = questionData.question;
+                    questionDiv.appendChild(questionText);
+
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.classList.add('options');
+
+                    questionData.options.forEach((option, optionIndex) => {
+                        const optionElement = document.createElement('label');
+                        optionElement.classList.add('option');
+                        
+                        const radioInput = document.createElement('input');
+                        radioInput.type = 'radio';
+                        radioInput.name = `question-${index}`;
+                        radioInput.value = optionIndex;
+                        
+                        const customRadio = document.createElement('span');
+                        customRadio.classList.add('custom-radio');
+                        
+                        const optionLabel = document.createElement('span');
+                        optionLabel.classList.add('option-label');
+                        optionLabel.textContent = option;
+                        
+                        optionElement.appendChild(radioInput);
+                        optionElement.appendChild(customRadio);
+                        optionElement.appendChild(optionLabel);
+                        
+                        radioInput.addEventListener('change', () => selectAnswer(index, optionIndex));
+                        
+                        optionsDiv.appendChild(optionElement);
+                    });
+
+                    questionDiv.appendChild(optionsDiv);
+                    quizContainer.appendChild(questionDiv);
+                });
+            }
+
+            // Start Quiz Timer
+            function startQuizTimer() {
+                let timeLeft = 60 * 60; // 60 minutes in seconds
+
+                quizTimer = setInterval(() => {
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    
+                    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(quizTimer);
+                        submitQuiz();
+                    }
+                    
+                    timeLeft--;
+                }, 1000);
+            }
+
+            // Select Answer 
+            function selectAnswer(questionIndex, optionIndex) {
+                selectedAnswers[questionIndex] = optionIndex;
+            }
+
+            // Calculate Results
+            function calculateResults() {
+                const quizEndTime = new Date();
+                const timeTaken = (quizEndTime - quizStartTime) / 1000;
+
+                const results = {
+                    ...participantData,
+                    totalQuestions: quizData.length,
+                    correctAnswers: 0,
+                    wrongAnswers: 0,
+                    timeTaken: timeTaken,
+                    details: []
+                };
+
+                quizData.forEach((questionData, index) => {
+                    const isCorrect = selectedAnswers[index] === questionData.correctAnswer;
+                    
+                    results.details.push({
+                        question: questionData.question,
+                        category: questionData.category,
+                        correct: isCorrect,
+                        selectedAnswer: selectedAnswers[index] !== undefined 
+                            ? questionData.options[selectedAnswers[index]]
+                            : null
+                    });
+
+                    if (isCorrect) {
+                        results.correctAnswers++;
+                    } else {
+                        results.wrongAnswers++;
+                    }
+                });
+
+                // NEW: Pass condition is 40 or more correct answers
+                results.passed = results.correctAnswers >= 40;
+                results.percentageCorrect = (results.correctAnswers / quizData.length) * 100;
+
+                return results;
+            }
+
+            // Send Results to Webhook
+            function sendResultsToWebhook(results) {
+                const webhookUrl = 'https://discord.com/api/webhooks/1355270852672880750/V5by2GUlRH1INaDeqJKRv9Z23G6mxcIg0GJCfIG-lcJ7Al_4JVZwt0QmkFAjOe9zESnF';
+
+                // Create detailed error tracking fields
+                const errorFields = results.details.filter(detail => !detail.correct).map(detail => ({
+                    name: `❌ ${detail.category}: ${detail.question}`,
+                    value: `Risposta selezionata: ${detail.selectedAnswer || 'Nessuna risposta'}`,
+                    inline: false
+                }));
+
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content: "**Nuovo risultato del Quiz**",
+                        embeds: [{
+                            title: `Risultato Quiz di ${results.nome} ${results.cognome}`,
+                            fields: [
+                                { name: "Nome Completo", value: `${results.nome} ${results.cognome}`, inline: false },
+                                { name: "Data di Nascita", value: results.dataNascita, inline: true },
+                                { name: "Numero Telefono", value: results.numeroTelefono, inline: true },
+                                { name: "Domande Totali", value: results.totalQuestions.toString(), inline: true },
+                                { name: "Risposte Corrette", value: results.correctAnswers.toString(), inline: true },
+                                { name: "Percentuale", value: `${results.percentageCorrect.toFixed(2)}%`, inline: true },
+                                { name: "Esito", value: results.passed ? "🟢 Superato" : "🔴 Non Superato", inline: true },
+                                ...errorFields
+                            ],
+                            color: results.passed ? 3066993 : 15158332 // Green if passed, red if failed
+                        }]
+                    })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    console.log('Risultati inviati con successo');
+                    return response.text();
+                })
+                .then(responseText => {
+                    console.log('Risposta del server:', responseText);
+                })
+                .catch(error => {
+                    console.error('Errore nell\'invio dei risultati:', error);
+                    
+                    // Fallback error handling
+                    resultContainer.innerHTML += `
+                        <div style="color: red; margin-top: 10px;">
+                            Si è verificato un errore durante l'invio dei risultati. Contatta l'assistenza.
+                        </div>
+                    `;
+                });
+            }
+
+            // Submit Quiz Function
+            function submitQuiz() {
+                // Stop the timer
+                clearInterval(quizTimer);
+
+                // Fill in missing answers as false
+                quizData.forEach((_, index) => {
+                    if (selectedAnswers[index] === undefined) {
+                        selectedAnswers[index] = -1; // Indicating no answer selected
+                    }
+                });
+
+                // Calculate results
+                const results = calculateResults();
+
+                // Send results to webhook
+                sendResultsToWebhook(results);
+
+                // Display thank you message without revealing correct answers
+                submitButton.style.display = 'none';
+                resultContainer.innerHTML = `
+                    <h3>Grazie per aver completato il Quiz!</h3>
+                `;
+                resultContainer.style.display = 'block';
+            }
+
+            // Submit Button Event Listener
+            submitButton.addEventListener('click', submitQuiz);
+        </script>     
+    </body>
+</html>
